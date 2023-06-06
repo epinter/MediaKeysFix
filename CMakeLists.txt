@@ -5,6 +5,7 @@ project(
         VERSION 1.0.0
         LANGUAGES CXX)
 set(PROJECT_LICENSE "GPLv3")
+set(PROJECT_COPYRIGHT "Copyright (c) 2023 Emerson Pinter")
 set(PROJECT_FRIENDLY_NAME ${PROJECT_NAME})
 set(PROJECT_LONG_NAME "Media Keys Fix")
 set(PROJECT_DESCRIPTION ${PROJECT_LONG_NAME})
@@ -17,7 +18,7 @@ include(pluginconfig)
 ######## dependencies
 find_package(CommonLibSSE REQUIRED)
 add_commonlibsse_plugin(${PROJECT_NAME} SOURCES ${HEADER_FILES} ${SOURCE_FILES}
-                        NAME ${PROJECT_FRIENDLY_NAME}
+                        NAME ${PROJECT_NAME}
                         AUTHOR "Emerson Pinter"
                         VERSION ${PROJECT_VERSION}
                         )

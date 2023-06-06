@@ -1,4 +1,6 @@
 /*
+Copyright (c) 2023 Emerson Pinter
+
 This file is part of Media Keys Fix SKSE.
 
 Foobar is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published

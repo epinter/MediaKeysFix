@@ -10,7 +10,7 @@
 Skyrim starts with exclusive access to keyboard and mouse, in a way that media keys, Windows key or any other key not handled by DirectInput are ignored. This makes the user life harder, to change volume you need to ALT+TAB or use an overlay.
 
 ## The solution
-This mod changes DirectInput flags so the game doesn't starts with exclusive access anymore. This leads to another problem, dead keys (for diacritics) are ignored, so some users won't be able to type single-quotes or double-quotes in console. This mod fixes this side effect too, but the option must be enable in .INI do disable dead keys. More details can be found [here](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee417921%28v=vs.85%29).
+This mod changes DirectInput flags so the game doesn't starts with exclusive access anymore. This leads to another problem, dead keys (for diacritics) are ignored, so some users with keyboard layouts that has accents (US-international, for example) wouldn't be able to type single-quotes or double-quotes in console. This mod fixes this side effect too, but the option must be enabled in .INI (DisableDeadKeys). More details about the exclusive/non-exclusive access of DirectInput can be found [here](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ee417921%28v=vs.85%29).
 
 ## ***Runtime requirements***
 
@@ -22,7 +22,6 @@ This mod changes DirectInput flags so the game doesn't starts with exclusive acc
 The MediaKeysFix.ini has the following options:
 ~~~
 [General]
-
 ;; Disable Windows key. Set to true to disable windows key.
 DisableWindowsKey = true
 

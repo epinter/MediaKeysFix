@@ -2,7 +2,7 @@
   "name": "mediakeysfix",
   "version-string": "1.0.0",
   "description": "Media Keys Fix",
-  "homepage": "https://www.nexusmods.com",
+  "homepage": "https://github.com/epinter/MediaKeysFix",
   "license": "GPL-3.0-or-later",
   "features": {
     "plugin": {

@@ -26,18 +26,6 @@ file(GLOB_RECURSE SOURCE_FILES
 		"${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
 		"${CMAKE_CURRENT_SOURCE_DIR}/src/*.cc")
 
-#source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/src
-#		PREFIX "Source Files"
-#		FILES ${SOURCE_FILES})
-
-#source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/src
-#		PREFIX "Header Files"
-#		FILES ${HEADER_FILES})
-
-#source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/include
-#		PREFIX "Public Header Files"
-#		FILES ${PUBLIC_HEADER_FILES})
-
 source_group("Source"
 		TREE ${CMAKE_CURRENT_SOURCE_DIR}
 		FILES
