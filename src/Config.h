@@ -21,6 +21,8 @@ namespace constants {
     static constexpr const char* OPT_INIDISWINKEY = "DisableWindowsKey";
     static constexpr const char* OPT_INIBACKGN = "BackgroundAccess";
     static constexpr const char* OPT_INIDISDEADK = "DisableDeadKeys";
+    static constexpr const char* OPT_INIDEBUG = "Debug";
+    static constexpr const char* COMMENT_INIDEBUG = ";; Hooks DirectInput to log the keyboard and mouse cooperativeLevel dwFlags.";
     static constexpr const char* COMMENT_INIWINKEY = ";; Disable Windows key. Set to true to disable windows key.";
     static constexpr const char* COMMENT_INIBACKGND =
         ";; Allow background access. STRONGLY RECOMMENDED TO BE SET = false, only useful for DEBUGGING.\n"
@@ -43,6 +45,7 @@ namespace mdkf {
         bool disableWindowsKey = true;
         bool backgroundAccess = false;
         bool disableDeadKeys = false;
+        bool debug = false;
 
     public:
         Config(Config&) = delete;
@@ -56,5 +59,7 @@ namespace mdkf {
         [[nodiscard]] bool isBackgroundAccess() const;
 
         [[nodiscard]] bool isDisableDeadKeys() const;
+
+        [[nodiscard]] bool isDebug() const;
     };
 }  // namespace mdkf

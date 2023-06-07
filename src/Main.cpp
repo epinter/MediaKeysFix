@@ -15,15 +15,46 @@ You should have received a copy of the GNU General Public License along with Foo
 #include "Main.h"
 
 #include "Config.h"
+#include "dinput/FakeIDirectInput8.h"
 
 using namespace constants;
 
+typedef HRESULT(__stdcall* CreateDInputProc)(HINSTANCE, DWORD, REFIID, LPVOID, LPUNKNOWN);
+static CreateDInputProc directInputCreateReal;
+
 namespace mdkf {
     void load() {
+        if (Config::getInstance().isDebug()) { //hooks DirectInput8Create to log SetCooperativeLevel dwFlags for keyboard and mouse
+            hookDInputCreate();
+        }
+
         patchCooperativeLevel();
+
         if (Config::getInstance().isDisableDeadKeys()) {
             initializeTounicodeHook();
         }
+    }
+
+    static HRESULT WINAPI directInput8CreateInstance(HINSTANCE hinst, DWORD dwVersion, REFIID riidltf, LPVOID* ppvOut,
+                                                       LPUNKNOWN punkOuter) {
+        IDirectInput8A* directInput;
+        HRESULT result = directInputCreateReal(hinst, dwVersion, riidltf, &directInput, punkOuter);
+        if (result != DI_OK)
+            return result;
+
+        *((IDirectInput8A**)ppvOut) = new FakeIDirectInput8(directInput);
+
+        return DI_OK;
+    }
+
+    void hookDInputCreate() {
+        uintptr_t iatAddress = (uintptr_t)SKSE::GetIATAddr("dinput8.dll", "DirectInput8Create");
+
+        directInputCreateReal = (CreateDInputProc) * (uintptr_t*)iatAddress;
+
+        REL::safe_write(iatAddress, (uintptr_t)directInput8CreateInstance);
+
+        logger::info("DirectInput8Create hooked");
     }
 
     void patchCooperativeLevel() {
