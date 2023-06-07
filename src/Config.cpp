@@ -29,6 +29,7 @@ namespace mdkf {
             disableWindowsKey = ini.GetBoolValue(INI_SECTION, OPT_INIDISWINKEY, disableWindowsKey);
             backgroundAccess = ini.GetBoolValue(INI_SECTION, OPT_INIBACKGN, backgroundAccess);
             disableDeadKeys = ini.GetBoolValue(INI_SECTION, OPT_INIDISDEADK, disableDeadKeys);
+            debug = ini.GetBoolValue(INI_SECTION, OPT_INIDEBUG, debug);
         } else {
             logger::error("Can't open config file '{}'. Trying to create a new.", CONFIG_FILE);
         }
@@ -45,13 +46,17 @@ namespace mdkf {
             ini.SetBoolValue(INI_SECTION, OPT_INIBACKGN, backgroundAccess, COMMENT_INIBACKGND, true);
             save = true;
         }
+        if (!ini.KeyExists(INI_SECTION, OPT_INIDEBUG)) {
+            ini.SetBoolValue(INI_SECTION, OPT_INIDEBUG, debug, COMMENT_INIDEBUG, true);
+            save = true;
+        }
 
         if (save) {
             ini.SaveFile(fileName.c_str());
         }
 
-        logger::info("Config: {}='{}'; {}='{}'; {}='{}';", OPT_INIDISWINKEY, disableWindowsKey, OPT_INIBACKGN, backgroundAccess,
-                     OPT_INIDISDEADK, disableDeadKeys);
+        logger::info("Config: {}='{}'; {}='{}'; {}='{}'; {}='{}';", OPT_INIDISWINKEY, disableWindowsKey, OPT_INIBACKGN, backgroundAccess,
+                     OPT_INIDISDEADK, disableDeadKeys, OPT_INIDEBUG, debug);
     }
 
     const Config& Config::getInstance() {
@@ -69,5 +74,9 @@ namespace mdkf {
 
     [[nodiscard]] bool Config::isDisableDeadKeys() const {
         return disableDeadKeys;
+    }
+
+    [[nodiscard]] bool Config::isDebug() const {
+        return debug;
     }
 }  // namespace mdkf

@@ -35,6 +35,7 @@ namespace mdkf {
     void patchCooperativeLevel();
     void writeDwFlags(int dwFlags);
     void initializeTounicodeHook();
+    void hookDInputCreate();
 
     int toUnicode(UINT wVirtKey, UINT wScanCode, const BYTE *lpKeyState, LPWSTR pwszBuff, int cchBuff, UINT wFlags);
 }  // namespace mdkf
