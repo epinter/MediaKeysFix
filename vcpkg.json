@@ -3,7 +3,7 @@
   "version-string": "1.0.0",
   "description": "Media Keys Fix",
   "homepage": "https://github.com/epinter/MediaKeysFix",
-  "license": "GPL-3.0-or-later",
+  "license": "LGPL-3.0-or-later",
   "features": {
     "plugin": {
 	  "description": "SKSE plugin",

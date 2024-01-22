@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.25)
 
 project(
         MediaKeysFix
         VERSION 1.0.0
         LANGUAGES CXX)
-set(PROJECT_LICENSE "GPLv3")
+set(PROJECT_LICENSE "LGPLv3")
 set(PROJECT_COPYRIGHT "Copyright (c) 2023 Emerson Pinter")
 set(PROJECT_FRIENDLY_NAME ${PROJECT_NAME})
 set(PROJECT_LONG_NAME "Media Keys Fix")
