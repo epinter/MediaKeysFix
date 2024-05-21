@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 
 project(
         MediaKeysFix
-        VERSION 1.0.0
+        VERSION 1.0.1
         LANGUAGES CXX)
 set(PROJECT_LICENSE "LGPLv3")
 set(PROJECT_COPYRIGHT "Copyright (c) 2023 Emerson Pinter")
